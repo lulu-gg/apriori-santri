@@ -14,17 +14,19 @@ class Santri extends Model
         'nama',
         'tempat_lahir',
         'tanggal_lahir',
-        'tes_tulis', // Tes Tulis
-        'surah_pilihan', // Surah Pilihan
-        'menulis_pegon', // Menulis Pegon
+        'tes_tulis', 
+        'surah_pilihan', 
+        'menulis_pegon',
+        'normalized_tes_tulis',
+        'normalized_surah_pilihan',
+        'normalized_menulis_pegon',
+        'kelas', // Tambahkan ini
     ];    
 
-    // Casting tanggal_lahir ke Carbon
     protected $dates = [
         'tanggal_lahir',
     ];
 
-    // Mutator untuk tanggal_lahir
     public function getTanggalLahirAttribute($value)
     {
         return Carbon::parse($value);

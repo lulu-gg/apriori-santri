@@ -64,9 +64,9 @@ class SantriSeeder extends Seeder
                 'nama' => $santri['nama'],
                 'tempat_lahir' => $santri['tempat_lahir'],
                 'tanggal_lahir' => $santri['tanggal_lahir'],
-                'tes_tulis' => $nilai_opsi[array_rand($nilai_opsi)], // Nilai dummy Tes Tulis
-                'surah_pilihan' => $nilai_opsi[array_rand($nilai_opsi)], // Nilai dummy Surah Pilihan
-                'menulis_pegon' => $nilai_opsi[array_rand($nilai_opsi)], // Nilai dummy Menulis Pegon
+                'tes_tulis' => $nilai_opsi[array_rand($nilai_opsi)] + rand(0, 9) / 10, // Nilai dummy Tes Tulis dengan desimal
+                'surah_pilihan' => $nilai_opsi[array_rand($nilai_opsi)] + rand(0, 9) / 10, // Nilai dummy Surah Pilihan dengan desimal
+                'menulis_pegon' => $nilai_opsi[array_rand($nilai_opsi)] + rand(0, 9) / 10, // Nilai dummy Menulis Pegon dengan desimal
             ]);
         }
     }

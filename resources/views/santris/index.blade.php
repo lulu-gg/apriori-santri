@@ -39,9 +39,6 @@
                                 <th>Nama</th>
                                 <th>Tempat Lahir</th>
                                 <th>Tanggal Lahir</th>
-                                <th>Tes Tulis</th>
-                                <th>Surah Pilihan</th>
-                                <th>Menulis Pegon</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -51,9 +48,6 @@
                                     <td>{{ $santri->nama }}</td>
                                     <td>{{ $santri->tempat_lahir }}</td>
                                     <td>{{ $santri->tanggal_lahir->format('d M Y') }}</td>
-                                    <td>{{ $santri->tes_tulis }}</td>
-                                    <td>{{ $santri->surah_pilihan }}</td>
-                                    <td>{{ $santri->menulis_pegon }}</td>
                                     <td>
                                         <a href="{{ route('santris.edit', $santri->id) }}" class="btn btn-warning btn-sm">
                                             <i class="fas fa-edit"></i>

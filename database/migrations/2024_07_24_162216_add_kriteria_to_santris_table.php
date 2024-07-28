@@ -14,9 +14,9 @@ class AddKriteriaToSantrisTable extends Migration
     public function up()
     {
         Schema::table('santris', function (Blueprint $table) {
-            $table->integer('x1')->after('tanggal_lahir')->default(0); // Tes Tulis
-            $table->integer('x2')->after('x1')->default(0); // Surah Pilihan
-            $table->integer('x3')->after('x2')->default(0); // Menulis Pegon
+            $table->integer('tes_tulis')->after('tanggal_lahir')->default(0); // Tes Tulis
+            $table->integer('surah_pilihan')->after('tes_tulis')->default(0); // Surah Pilihan
+            $table->integer('menulis_pegon')->after('surah_pilihan')->default(0); // Menulis Pegon
         });
     }
 
@@ -28,7 +28,7 @@ class AddKriteriaToSantrisTable extends Migration
     public function down()
     {
         Schema::table('santris', function (Blueprint $table) {
-            $table->dropColumn(['x1', 'x2', 'x3']);
+            $table->dropColumn(['tes_tulis', 'surah_pilihan', 'menulis_pegon']);
         });
     }
 }
