@@ -57,16 +57,14 @@ class SantriSeeder extends Seeder
             ['nama' => 'Muhamad Kowim Al-Ma\'nawi', 'tempat_lahir' => 'Ponorogo', 'tanggal_lahir' => '2005-08-22'],
         ];
 
-        $nilai_opsi = [30, 40, 50, 60, 70, 80, 90, 100];
-
         foreach ($santris as $santri) {
             Santri::create([
                 'nama' => $santri['nama'],
                 'tempat_lahir' => $santri['tempat_lahir'],
                 'tanggal_lahir' => $santri['tanggal_lahir'],
-                'tes_tulis' => $nilai_opsi[array_rand($nilai_opsi)] + rand(0, 9) / 10, // Nilai dummy Tes Tulis dengan desimal
-                'surah_pilihan' => $nilai_opsi[array_rand($nilai_opsi)] + rand(0, 9) / 10, // Nilai dummy Surah Pilihan dengan desimal
-                'menulis_pegon' => $nilai_opsi[array_rand($nilai_opsi)] + rand(0, 9) / 10, // Nilai dummy Menulis Pegon dengan desimal
+                'tes_tulis' => rand(1, 20) * 5, // Nilai random kelipatan 5 (5-100)
+                'surah_pilihan' => rand(1, 20) * 5, // Nilai random kelipatan 5 (5-100)
+                'menulis_pegon' => rand(1, 20) * 5, // Nilai random kelipatan 5 (5-100)
             ]);
         }
     }
