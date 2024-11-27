@@ -21,7 +21,13 @@
         <!-- Search Bar -->
         <div class="mb-4">
             <form action="{{ route('santris.index') }}" method="GET" class="d-flex">
-                <input type="text" name="search" class="form-control me-2 border-0 rounded-pill shadow-sm" placeholder="Cari Santri..." value="{{ request('search') }}">
+                <input 
+                    type="text" 
+                    name="search" 
+                    class="form-control me-2 border-0 rounded-pill shadow-sm" 
+                    placeholder="Cari Santri..." 
+                    value="{{ request('search') }}"
+                >
                 <button type="submit" class="btn btn-outline-primary rounded-pill">
                     <i class="fas fa-search"></i>
                 </button>
@@ -31,7 +37,6 @@
         <!-- Data Table -->
         <div class="card border-light shadow-sm">
             <div class="card-body p-0">
-                <!-- Responsive Table -->
                 <div class="table-responsive">
                     <table class="table table-hover mb-0" id="santri-table">
                         <thead class="table-light">
@@ -49,10 +54,17 @@
                                     <td>{{ $santri->tempat_lahir }}</td>
                                     <td>{{ $santri->tanggal_lahir->format('d M Y') }}</td>
                                     <td>
-                                        <a href="{{ route('santris.edit', $santri->id) }}" class="btn btn-warning btn-sm">
+                                        <a 
+                                            href="{{ route('santris.edit', $santri->id) }}" 
+                                            class="btn btn-warning btn-sm"
+                                        >
                                             <i class="fas fa-edit"></i>
                                         </a>
-                                        <form action="{{ route('santris.destroy', $santri->id) }}" method="POST" style="display:inline;">
+                                        <form 
+                                            action="{{ route('santris.destroy', $santri->id) }}" 
+                                            method="POST" 
+                                            style="display:inline;"
+                                        >
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger btn-sm">
@@ -67,17 +79,23 @@
                 </div>
             </div>
         </div>
+
+        <!-- Pagination -->
+        <div class="d-flex justify-content-center mt-3">
+            {{ $santris->links() }}
+        </div>
     </div>
 
     @push('scripts')
-        <!-- Include jQuery before DataTables -->
+        <!-- Include jQuery and DataTables -->
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
         <script>
             $(document).ready(function() {
                 $('#santri-table').DataTable({
-                    // Optional: You can configure DataTables here if needed
+                    paging: false, // Disable pagination from DataTables
+                    searching: false // Disable search from DataTables
                 });
             });
         </script>

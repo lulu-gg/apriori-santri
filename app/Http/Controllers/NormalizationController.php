@@ -9,9 +9,9 @@ class NormalizationController extends Controller
 {
     public function index()
     {
-        $santris = Santri::all();
+        $santris = Santri::paginate(10); // Menampilkan 10 data per halaman
         return view('normalization.index', compact('santris'));
-    }
+    }    
 
     public function process()
     {

@@ -7,11 +7,21 @@ use App\Models\Santri;
 
 class SantriController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $santris = Santri::all();
+        $search = $request->input('search');
+    
+        if ($search) {
+            $santris = Santri::where('nama', 'like', '%' . $search . '%')
+                ->orWhere('tempat_lahir', 'like', '%' . $search . '%')
+                ->orderBy('created_at', 'desc')
+                ->paginate(10);
+        } else {
+            $santris = Santri::orderBy('created_at', 'desc')->paginate(10);
+        }
+    
         return view('santris.index', compact('santris'));
-    }
+    }       
 
     public function create()
     {

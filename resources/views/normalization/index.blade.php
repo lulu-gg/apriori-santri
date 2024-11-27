@@ -24,7 +24,6 @@
         <!-- Data Table -->
         <div class="card border-light shadow-sm">
             <div class="card-body p-0">
-                <!-- Responsive Table -->
                 <div class="table-responsive">
                     <table class="table table-hover mb-0" id="normalization-table">
                         <thead class="table-light">
@@ -55,18 +54,24 @@
                 </div>
             </div>
         </div>
+
+        <!-- Pagination -->
+        <div class="d-flex justify-content-center mt-3">
+            {{ $santris->links() }}
+        </div>
     </div>
 @endsection
 
 @push('scripts')
-    <!-- Include jQuery before DataTables -->
+    <!-- Include jQuery and DataTables -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
     <script>
         $(document).ready(function() {
             $('#normalization-table').DataTable({
-                // Optional: You can configure DataTables here if needed
+                paging: false, // Disable DataTables pagination
+                searching: false // Disable DataTables search
             });
         });
     </script>
