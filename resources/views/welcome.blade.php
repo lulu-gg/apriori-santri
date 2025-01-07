@@ -10,16 +10,17 @@
 
     <div class="flex items-center justify-center min-h-screen">
         @if (Route::has('login'))
-            <div class="fixed top-0 right-0 p-6 text-right">
-                @auth
-                    <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-400">Dashboard</a>
-                @else
-                    <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-400">Log in</a>
-                    @if (Route::has('register'))
-                        <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-400">Register</a>
-                    @endif
-                @endauth
-            </div>
+        <div class="fixed top-0 right-0 p-6 text-right">
+            @auth
+            <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-400">Dashboard</a>
+            @else
+            <a href="{{ route('login') }}">
+                <x-primary-button class="ms-3">
+                    {{ __('Log in') }}
+                </x-primary-button>
+            </a>
+            @endauth
+        </div>
         @endif
 
         <div class="max-w-7xl mx-auto p-6 lg:p-8">

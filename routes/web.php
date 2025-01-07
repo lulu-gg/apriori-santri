@@ -23,10 +23,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
@@ -49,4 +45,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/kelas/process', [KelasController::class, 'process'])->name('kelas.process');
 });
 
-require __DIR__.'/auth.php';
+// Nonaktifkan rute register
+Auth::routes(['register' => false]);
+
+// Hapus pemanggilan duplikat Auth::routes()
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
