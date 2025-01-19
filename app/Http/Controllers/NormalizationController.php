@@ -9,7 +9,7 @@ class NormalizationController extends Controller
 {
     public function index()
     {
-        $santris = Santri::paginate(10); // Menampilkan 10 data per halaman
+        $santris = Santri::orderBy('created_at', 'desc')->paginate(10);
         return view('normalization.index', compact('santris'));
     }    
 

@@ -10,7 +10,7 @@ class KelasController extends Controller
     public function index()
     {
         $santris = Santri::all();
-        $santris = Santri::paginate(10); // Mengambil 10 data per halaman
+        $santris = Santri::orderBy('created_at', 'desc')->paginate(10);
         return view('kelas.index', compact('santris'));
     }
 
